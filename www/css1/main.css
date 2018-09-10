@@ -1,0 +1,141 @@
+body {
+  overflow-x: hidden; /* 화면 왼쪽 오른쪽 내용이 넘칠때 숨겨라 */
+}
+
+.space_50{
+	padding-top: 50px;
+}
+.container_80{
+	width: 80%;
+	height: 30vh;
+	margin: auto;
+	z-index:1;
+}
+.navbar {
+	position: fixed;
+	height: 100px;
+	width: 100%;
+	z-index:999;
+}
+.navbar-brand{
+	color: white;
+	font-size: 40px;
+	background-image: url('upload/steps_logo.jpg');
+}
+li {
+	list-style: none;
+	float:left;
+	padding: 0 10px;
+	font-size: 18px;
+}
+li a{
+	color: white;
+}
+.logo-img {
+	height: 70px;
+	width: 70px;
+}
+#slick-prev,
+#slick-next
+{
+	width: 200px;
+    height: 300px;
+}
+h4 {
+	position: absolute;
+	top: 70%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	color: white;
+	font-size: 50px;
+	-webkit-transition: all 300ms ease;
+	transition: all 300ms ease;
+	text-transform: uppercase;
+}
+p {
+	position: absolute;
+	top: 80%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	color: white;
+	font-size: 25px;
+	-webkit-transition: all 300ms ease;
+	transition: all 300ms ease;
+	text-transform: uppercase;
+}
+.slide{
+	position: relative;
+}
+.slider{
+	min-height: 300px;
+}
+
+.slick-slide{
+	position: relative;
+}
+
+.slick-slide img{
+	width: 100%;
+	height: 65vh;
+}
+
+.slider-textbox{
+	text-align: center;
+}
+.slick-prev:before, .slick-next:before{
+    color: black;
+}
+
+
+.slick-slide{
+    transition: all ease-in-out .3s;
+    opacity: .2;
+	cursor: move;
+}
+    
+.slick-active{
+    opacity: .5;
+}
+
+.slick-current{
+    opacity: 1;
+}
+
+.progress-div{
+	background:transparent;
+	padding: 15px 0px 0px 0px;
+}
+.progress-in{
+	background:#d8d8d8;
+}
+
+.side {
+    font-size: 0; /* Eliminate spacing between inline block elements */
+    text-align: justify;
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.side:after {
+    content: 'abc';
+    display: inline-block;
+    width: 100%;
+    height: 0;
+}
+.side li {
+    display: inline-block;
+    font-size: 1rem; /* Reuse root element's font size */
+}
+
+.invest-period{
+	float:right;
+}
+
+
+footer {
+  padding: 25px 0;
+  text-align: center;
+}

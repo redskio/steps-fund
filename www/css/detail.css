@@ -1,0 +1,14 @@
+
+#investNum, #investTitle, #investMoney, #investTime {
+  text-align:center;
+}
+#investMoney {
+  font-size:1.6em;
+}
+#investTime {
+	font-size: 0.8em;
+}
+label.detail_num {
+	font-weight:200;
+	font-size:1.6em;
+}

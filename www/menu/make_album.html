@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+<title>Travel With</title>
+<style type="text/css">
+
+</style>
+</head>
+
+<body>
+<table>
+<tr>
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'].'/function/db_connect.php';
+$db = new DBC;
+$db->DBI();
+
+$db->query = "SELECT * FROM album_image WHERE id='kstbook' and album_no='0'";
+$db->DBQ();
+
+for($i = 1; $data = $db->result->fetch_assoc(); ++$i) {
+?>
+<td><img src="<?php echo '/upload/'.$data['file_name']?>" width="200px" height="200px"></td>
+<?php
+    if($i % 3 == 0) { 
+      //줄바꿈 코드
+    echo "</tr><tr>";
+
+  }
+}
+$db->DBO();
+?>
+</tr>
+</table>
+</body>
+</html>

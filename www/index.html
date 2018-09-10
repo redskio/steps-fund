@@ -1,0 +1,320 @@
+<?php
+	session_start();
+	require_once $_SERVER['DOCUMENT_ROOT'].'/function/db_connect.php'; /* function에서 db를 연결하는 php를 불러옴 */
+	$db = new DBC; /* 새로운 db생성 */
+	$db->DBI(); /* 관계형 데이터베이스를 접근할 때에는 데이터베이스에 독립적인 인터페이스(Database independent interface : DBI)가 표준으로 사용된다.
+	따라서 DBI를 통해서 프로그래머는 데이터베이스와 독립적으로 SQL 코드를 자신의 프로그램에서 쓸 수 있다. (DBI를 통해서 DB에 접속했다고 보면됨)
+	인터페이스란? : 컴퓨팅에서 컴퓨터 시스템끼리 정보를 교환하게 할 수 있는것		
+	*/
+	$db->query = "SELECT count(*) FROM invest_page"; /* query(쿼리)란 데이터베이스에 정보를 요청하는 것이다. 우변에는 요청하는 사항을 문법에 맞게 기입하면 된다.*/
+	$db->DBQ(); /* query(쿼리)를 DB에 전송 */
+	$count = $db->result->fetch_array();
+	$total_count = $count[0]; // 데이터의 총 수
+?>
+<!DOCTYPE html>
+<html lang="kr">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>스탭스펀드-차이를 만들다</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/carousel.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+	<link href="css/page/agency.css" rel="stylesheet">
+    <!-- Custom styles for this template 수정필요-->
+  </head>
+
+  <body id="page-top">
+	<!--네비게이션바 navbar-expand-lg 화면크기에 따라 탄력적으로 반응 일정크기 이상이면 가로, 이하면 세로로 배치된다
+					 fixed-top 네비게이션바가 계속 화면 위에 배치된다 -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+	  <!--컨테이너 -->	
+      <div class="container">
+	    <!--navbar-brand 네비게이션바에서 로고를 쓰고 싶을떄 사용한다.
+		참고 : js-scroll-trigger 맨위로 올라가게 하는 용도(필요없어서 삭제)
+		-->
+        <a class="navbar-brand" href="../"><img src="../upload/steps_logo.jpg" width='70px'> STEPS FUND</a> 
+		
+		<!-- 부트스트랩 내비게이션바 : 화면크기가 줄었을때 생기는 메뉴(반응형) :  navbar-toggle
+		data-target, aria-controls : id가 navbarResponsive인 클래스의 크기가 달라졌을때 반응한다
+		-->
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+		<!-- 부트스트랩 내비게이션바 : 화면크기가 커졌을때 원래 메뉴로 돌아온다(반응형) : navbar-collapse -->
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+		<!-- text-uppercase 모든문자를 대문자로 바꿈(필요없어서 삭제)
+		ml-auto : 네비게이션바를 화면 오른쪽으로 배치한다-->
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/invest/?page=1">투자하기</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">대출받기</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">이용안내</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">회사소개</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">로그인</a>
+            </li>
+			<li class="nav-item">
+              <a class="nav-link" href="">회원가입</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+
+    <header>
+	<!--carousel slide : carousel=슬라이드 생성, slide=스르륵 넘기는 애니메이션 효과, data-ride=커러셀 페이지로 로드시 애니메이션으로 표시되는 데 사용-->
+      <div id="carousel" class="carousel slide" data-ride="carousel">
+	    <!--ol : 정렬된 리스트의 항목을 나타낼때 쓰인다. li : 리스트의 각각의 요소-->
+        <ol class="carousel-indicators">
+		  <!--data-slide-to : 슬라이드 번호, class="active" : 초기화 요소로 한 슬라이드에는 꼭 필요하다. 없으면 캐러셀이 보이지 않는다.-->
+          <li data-target="#carousel" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel" data-slide-to="1"></li>
+          <li data-target="#carousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+          <!-- carousel-item active : 캐러셀 아이템 초기화 요소 -->
+          <div class="carousel-item active" style="background-image: url('../upload/slide0.jpg')">
+		  <!-- carousel-caption : 슬라이드에 내용을 넣을 수 있다 d-none d-md-block : 화면 크기가 md(모바일크기)로 작을때 캐러셀 캡션이 안보이게한다-->
+            <div class="carousel-caption d-none d-md-block">
+              <h3>평균 수익률 13%</h3>
+              <p>저축으로는 얻을 수 없는 수익률!</p>
+            </div>
+          </div>
+          <div class="carousel-item" style="background-image: url('../upload/slide1.png')">
+            <div class="carousel-caption d-none d-md-block">
+              <h3>클릭하여 상담받으세요</h3>
+              <p>친절하게 상담드리겠습니다.</p>
+            </div>
+          </div>
+          <div class="carousel-item" style="background-image: url('../upload/slide2.jpg')">
+            <div class="carousel-caption d-none d-md-block">
+              <h3>이벤트 안내</h3>
+              <p>회원가입 후 계좌개설시 9000원어치의 포인트지급</p>
+            </div>
+          </div>
+        </div>
+		<!-- carousel-control-prev : 이전버튼-->
+        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+		<!-- carousel-control-prev : 이전버튼-->
+        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Services -->
+    <section id="services">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">스탭스 투자상품</h2>
+            <h3 class="section-subheading">스탭스는 고객님의 돈을 안전하게 늘려나갈 수 있도록 노력합니다.</h3>
+          </div>
+        </div>
+        <div class="row">
+		
+		<?php
+			for($j=1;$j<=3;$j++)
+			{
+				$temp_item_num = ($_GET['page']-1)*$b_pageNum_list+$j;
+				$item_num = $total_count + 1 - $temp_item_num;
+				$db->query = "SELECT * FROM invest_page WHERE invest_num = '$item_num'";
+				$db->DBQ();
+				$data = $db->result->fetch_array();
+				$percent = ((int)$data['invest_money2']/(int)$data['invest_money1']*100)."%";
+				?>
+				<div class="portfolio-item col-lg-4 col-sm-6">
+					<div class="card h-100" style = "cursor: pointer;" onclick = "location.href='/invest/detail.php?invest_num=<?echo $item_num?>'">
+						<img class="card-img-top" src="<?echo '../upload/'.$data[invest_image1]?>" alt="" height="200">
+						<div class="card-body">
+						<span class="card-icon-state"><?if($data[invest_type]=='0'){echo "투자예정";}else if($data[invest_type]=='1'){echo "투자모집중";}?></span>
+						<div>
+						제<?echo $item_num?>호
+						</div>
+						<div><?echo $data[invest_name]?></div>
+						<div><?echo $data[invest_rate].'%'?></div>
+						<div><?echo $data[invest_month].'개월'?></div>
+						<div><?echo $data[invest_desc1]?></div>
+
+						<div class="progress-div">
+							<div class="progress-in">
+								<div class="progress-bar progress-bar-success" role="progressbar" style="width:<?php echo $percent;?>; height:5px">
+								</div>
+							</div>	
+						</div>
+						<div class="side">
+								<li>참여자수: <?echo $data[invest_man].'명'?></li>
+								<li><?php echo $percent;?></li>
+						</div>
+						<div class="invest-period"><?echo $data[invest_limit]?></div>
+
+						</div>
+						
+					</div>
+				</div>
+				<?
+			
+		}
+		?>
+	  
+      </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="bg-light" id="portfolio">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">Portfolio</h2>
+            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="img/portfolio/01-thumbnail.jpg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4>Threads</h4>
+              <p class="text-muted">Illustration</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="img/portfolio/02-thumbnail.jpg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4>Explore</h4>
+              <p class="text-muted">Graphic Design</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="img/portfolio/03-thumbnail.jpg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4>Finish</h4>
+              <p class="text-muted">Identity</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="img/portfolio/04-thumbnail.jpg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4>Lines</h4>
+              <p class="text-muted">Branding</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="img/portfolio/05-thumbnail.jpg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4>Southwest</h4>
+              <p class="text-muted">Website Design</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="img/portfolio/06-thumbnail.jpg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4>Window</h4>
+              <p class="text-muted">Photography</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <span class="copyright">Copyright &copy; Your Website 2018</span>
+          </div>
+		  <div class="col-md-4">
+		  <!--여기에 원하는 내용을 채워넣어라 -->
+		  </div>
+          <div class="col-md-4">
+            <ul class="list-inline quicklinks">
+              <li class="list-inline-item">
+                <a href="#">Privacy Policy</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Terms of Use</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+	</footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.bundle.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="../js/agency.js"></script>
+
+  </body>
+
+</html>

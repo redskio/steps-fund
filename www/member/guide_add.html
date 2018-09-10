@@ -1,0 +1,85 @@
+<?php
+    require_once $_SERVER['DOCUMENT_ROOT'].'/function/session.php'
+?>
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Travel-With</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js" ></script>
+<script type="text/javascript" src="./join_form.js"></script>
+</head>
+<body>
+<div id="wrap">
+    <div id="container">
+        <h1 class="title">가이드 등록</h1>
+		<form method="post" enctype="multipart/form-data" action="/function/upload_guide_image.php">
+			<div class="line">
+                <p>사진*</p>
+				<input type="file" name="upload_file">
+				<input type="submit" value="업로드">
+            </div>
+		</form>
+        <form name="signUp" action="./guide_add.php" method="post" onsubmit="return checkSubmit()">
+            <div class="line">
+                <p>현지 연락처 *</p>
+                <div class="inputArea">
+                    <input type="text" name="guide_phone1" class="guide_phone1" />
+                </div>
+            </div>
+            <div class="line">
+                <p>비상 연락처 *</p>
+                <div class="inputArea">
+                    <input type="password" name="guide_phone2" class="guide_phone2" />
+                </div>
+            </div>
+            <div class="line">
+                <p>카카오톡 ID *</p>
+                <div class="inputArea">
+                    <input type="password" name="guide_kakao" class="guide_kakao"  />
+                </div>
+            </div>
+            <div class="line">
+                <p>키워드 *</p>
+                <div class="inputArea">
+                    <input type="text" name="guide_keyword" class="guide_keyword"  />
+                </div>
+            </div>
+            <div class="line">
+                <p>소개 *</p>
+                <div class="inputArea">
+                    <input type="text" name="guide_intro" class="guide_intro" />
+                </div>
+            </div>
+            <div class="line">
+                <p>현지 거주 기간을 선택해주세요. *</p>
+                <div class="inputArea">
+                    <input type="text" name="guide_live1" class="guide_live1" />
+                </div>
+            </div>
+			<div class="line">
+                <p>앞으로의 현지 거주 기간을 선택해주세요. *</p>
+                <div class="inputArea">
+                    <input type="text" name="guide_live2" class="guide_live2" />
+                </div>
+            </div>
+			<div class="line">
+                <p>파트너 약관 *</p>
+                <div class="inputArea">
+                    <input type="text" name="guide_polic" class="guide_polic" />
+                </div>
+            </div>
+            <div class="line">
+                <input type="submit" value="등록" class="submit" />
+            </div>
+        </form>
+ 
+        <div class="formCheck">
+            <input type="hidden" name="idCheck" class="idCheck" />
+            <input type="hidden" name="pw2Check" class="pwCheck2" />
+            <input type="hidden" name="eMailCheck" class="eMailCheck" />
+        </div>
+    </div>
+</div>
+</body>
+</html>

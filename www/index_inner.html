@@ -1,0 +1,54 @@
+<?php
+	session_start(); //세션 시작
+?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<link rel="stylesheet" href="../css/main.css"> <!-- main.css 를 불러옴 -->
+<title>스탭스 펀딩</title>
+
+</head>
+<script>
+	//Onsubmit 이벤트
+	function alert_submit(){
+		var user_id = '<?php echo $_SESSION['ses_userid']; ?>';
+		if(user_id == ''){
+			alert("로그인하세요");
+			location.href='../member/login.php';
+			return false;
+		}else{
+			location.href='./mypage/mypage.php'
+			return true; 
+		}
+		return true;
+	};
+</script>
+
+<body>
+	<div id="div_top"> <!-- main.css 에서 div_top 부분 -->
+		<?echo $_SESSION['ses_userid'].'님 안녕하세요';?> <!--세션에서 유저 id를 가져옴 -->
+		<button type="button" onclick="location.href='./member/join.php' ">회원가입</button> 
+		<button type="button" onclick="location.href='./member/guide_add.html' ">가이드등록</button>
+		<button type="button" onclick="alert_submit(); ">내정보</button>
+		<button type="button" onclick="location.href='./member/login.php' ">로그인</button>
+		<button type="button" onclick="location.href='./member/logout.php' ">로그아웃</button>
+	</div>
+	<div id="div_info">
+		<button type="button" onclick="location.href='./invest/invest_main.php' ">투자하기</button>  <!--해당 페이지로 이동 -->
+	</div>
+	<div id="div_menu">
+		<div>
+		<button type="button" onclick="location.href='./menu/upload_image.php' ">사진올리기</button>
+		</div>
+		<div>
+		<button type="button" onclick="location.href='./menu/make_album.html' ">앨범만들기</button>
+		</div>
+	</div>
+	<div id="div_root">
+		
+	</div>
+	
+	
+</body>
+</html>
